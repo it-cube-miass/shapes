@@ -17,6 +17,6 @@ public class Point {
 
     @Override
     public String toString() {
-        return String.format("{x: %.2f, y: %.2f}", x, y);
+        return String.format("Point {x: %.2f, y: %.2f}", x, y);
     }
 }
