@@ -17,4 +17,18 @@ public class Shape {
     public String toString() {
         return String.format("Shape {color: %s}", color);
     }
+
+    public static Shape findMaxAreaShape(Shape[] arr) {
+        Shape maxShape = null;
+        double maxArea = Double.NEGATIVE_INFINITY;
+        for (Shape shape: arr) {
+            double area = shape.getArea();
+            if (area > maxArea) {
+                maxShape = shape;
+                maxArea = area;
+            }
+        }
+
+        return maxShape;
+    }
 }
