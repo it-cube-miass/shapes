@@ -9,8 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ShapeTest {
     private Shape shape;
     private String color = "green";
+    private Class clazz = null;
     @BeforeEach
-    public void createShape() {
+    public void createShape() throws Exception {
+        try {
+            clazz = Class.forName("Shape");
+        } catch (ClassNotFoundException e) {
+            fail("class Shape not found");
+        }
+
         shape = new Shape(color);
     }
 
@@ -37,16 +44,28 @@ class ShapeTest {
 
     @Test
     void findMaxAreaShape() {
-        boolean hasMethod = false;
-        Method[] methods = Shape.class.getMethods();
-        for (Method m: methods) {
-            if (m.getName().equals("findMaxAreaShape")) {
-                hasMethod = true;
-                break;
-            }
+        try {
+            Method m = clazz.getMethod("findMaxAreaShape");
+        } catch (NoSuchMethodException e) {
+            fail("method findMaxAreaShape not found");
         }
-        assertEquals(true, hasMethod, "method findMaxAreaShape not found");
 
+        Shape s1 = new Shape("green"){
+            @Override
+            public double getArea() {
+                return 2;
+            }
+        };
 
+        Shape s2 = new Shape("green"){
+            @Override
+            public double getArea() {
+                return 2;
+            }
+        };
+        Shape[] arr = {s1, s2};
+
+        Shape max = Shape.findMaxAreaShape(arr);
+        assertEquals(s2, max);
     }
 }
