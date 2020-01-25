@@ -17,7 +17,8 @@ public class Main {
 
     private static void printArrayElements(Object[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(i + ": " + arr[i]);
+
+            System.out.println((i + 1) + ": " + arr[i]);
         }
     }
 }

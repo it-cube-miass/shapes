@@ -1,9 +1,10 @@
-public class Shape {
+public abstract class Shape {
     private String color;
 
     public Shape(String color) {
         this.color = color;
     }
+
 
     public String getColor() {
         return color;
@@ -16,5 +17,16 @@ public class Shape {
     @Override
     public String toString() {
         return String.format("Shape {color: %s}", color);
+    }
+
+    public static Shape findMaxAreaShape (Shape[] arr) {
+        Shape shapeWithMaxArea;
+        shapeWithMaxArea=arr[0];
+        for(Shape s : arr) {
+            if(s.getArea() > shapeWithMaxArea.getArea()){
+                shapeWithMaxArea = s;
+            }
+        }
+        return shapeWithMaxArea;
     }
 }
