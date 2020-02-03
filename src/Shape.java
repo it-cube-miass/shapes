@@ -1,4 +1,5 @@
 public class Shape {
+    private static final double p = Math.PI;
     private String color;
 
     public Shape(String color) {
