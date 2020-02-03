@@ -7,8 +7,9 @@ public class Main {
         Circle c = new Circle(p1, 1, "green");
         Square s = new Square(p1, 1, "blue");
         Triangle t = new Triangle(p1, p2, p3, "red");
+//        Shape shape = new Shape("black");
 
-        Shape[] shapes = new Shape[]{c, s, t};
+        Shape[] shapes = new Shape[]{c, s, t, shape};
         printArrayElements(shapes);
 
         Shape maxShape = Shape.findMaxAreaShape(shapes);
